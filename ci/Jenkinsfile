@@ -1,15 +1,17 @@
 pipeline {
 
     agent {
-        label 'docker'
+        label 'linux git jq docker'
     }
 
     stages {
         stage('Build') {
             steps {
+                // SEED must be set to false because application under test by default generates 10 random bookings.
                 sh '''
                 git clone https://github.com/mwinteringham/restful-booker.git
                 cd restful-booker
+                jq '.scripts.start = "cross-env SEED=false node ./bin/www"' package.json > package.json.tmp && mv package.json.tmp package.json
                 docker compose build
                 '''
             }
