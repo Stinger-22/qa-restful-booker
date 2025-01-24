@@ -1,0 +1,43 @@
+pipeline {
+
+    agent {
+        label 'docker'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh '''
+                cd restful-booker
+                docker compose build
+                '''
+            }
+        }
+        stage('Integration Testing') {
+            steps {
+                sh '''
+                cd restful-booker
+                docker compose up -d
+                cd ..
+                git clone https://github.com/Stinger-22/qa-restful-booker.git
+                cd qa-restful-booker
+                ./mvnw test
+                '''
+            }
+            post {
+                always {
+                    sh '''
+                    cd restful-booker
+                    docker compose down
+                    '''
+                }
+            }
+        }
+        stage('Cleanup') {
+            steps {
+                deleteDir()
+            }
+        }
+    }
+
+}
