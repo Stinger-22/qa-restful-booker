@@ -4,10 +4,10 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 
 /**
- * In this class RestAssured default variables are configured.
+ * In this class RestAssured default behaviour is configured.
  * Each test class should extend this.
  */
-public class TestBase {
+public class BaseAPI {
     protected static final String BASE_URI = "http://localhost";
     protected static final int PORT = 3001;
 

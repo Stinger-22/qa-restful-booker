@@ -1,4 +1,4 @@
-package com.restfulbooker;
+package com.restfulbooker.ui;
 
 import com.microsoft.playwright.*;
 

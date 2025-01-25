@@ -1,21 +1,20 @@
-package com.restfulbooker.api;
+package com.restfulbooker.api.tests;
 
+import com.restfulbooker.api.BaseAPI;
+import com.restfulbooker.api.requests.PingAPI;
 import com.restfulbooker.api.specification.response.ResponsePing;
+import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.given;
-
-public class TestPing extends TestBase {
-    private static final String PING_PATH = "ping/";
-
+public class TestPing extends BaseAPI {
     @Test
     void testPingIsWorking() {
         ResponseSpecification expectedResponse = ResponsePing.expectedPing();
 
-        given()
-            .get(PING_PATH)
-        .then()
+        Response ping = PingAPI.ping();
+
+        ping.then()
             .spec(expectedResponse);
     }
 }
