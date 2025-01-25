@@ -1,38 +1,40 @@
 package com.restfulbooker.api.requests.util;
 
-public record BookingSearch(String firstName,
-                            String lastName,
-                            String checkin,
-                            String checkout) {
+import java.time.LocalDate;
+
+public record BookingSearch(String firstname,
+                            String lastname,
+                            LocalDate checkin,
+                            LocalDate checkout) {
 
     public static final class Builder {
-        private String firstName;
-        private String lastName;
-        private String checkin;
-        private String checkout;
+        private String firstname;
+        private String lastname;
+        private LocalDate checkin;
+        private LocalDate checkout;
 
-        public Builder firstName(String firstName) {
-            this.firstName = firstName;
+        public Builder firstname(String firstname) {
+            this.firstname = firstname;
             return this;
         }
 
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
+        public Builder lastname(String lastname) {
+            this.lastname = lastname;
             return this;
         }
 
-        public Builder checkin(String checkin) {
+        public Builder checkin(LocalDate checkin) {
             this.checkin = checkin;
             return this;
         }
 
-        public Builder checkout(String checkout) {
+        public Builder checkout(LocalDate checkout) {
             this.checkout = checkout;
             return this;
         }
 
         public BookingSearch build() {
-            return new BookingSearch(firstName, lastName, checkin, checkout);
+            return new BookingSearch(firstname, lastname, checkin, checkout);
         }
     }
 }

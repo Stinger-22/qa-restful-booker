@@ -13,11 +13,11 @@ public class BookingAPI extends BaseAPI {
     public static Response getBookingIds(BookingSearch bookingSearch) {
         RequestSpecification request = given();
 
-        if (bookingSearch.firstName() != null) {
-            request.queryParam("firstName", bookingSearch.firstName());
+        if (bookingSearch.firstname() != null) {
+            request.queryParam("firstname", bookingSearch.firstname());
         }
-        if (bookingSearch.lastName() != null) {
-            request.queryParam("lastName", bookingSearch.lastName());
+        if (bookingSearch.lastname() != null) {
+            request.queryParam("lastname", bookingSearch.lastname());
         }
         if (bookingSearch.checkin() != null) {
             request.queryParam("checkin", bookingSearch.checkin());
@@ -25,7 +25,9 @@ public class BookingAPI extends BaseAPI {
         if (bookingSearch.checkout() != null) {
             request.queryParam("checkout", bookingSearch.checkout());
         }
+
         return request
-                .get(PATH);
+                .when()
+                    .get(PATH);
     }
 }
