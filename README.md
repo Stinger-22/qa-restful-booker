@@ -1,7 +1,8 @@
 # Testing restful-booker website
 
-## Features
-- [ ] Used Maven Wrapper -> https://maven.apache.org/wrapper/
-
-## My workflow
-1. Jenkins Docker image. [Docs](https://github.com/jenkinsci/docker/blob/master/README.md)
+## How to launch tests:
+### Manually
+Follow https://github.com/mwinteringham/restful-booker instructions for setting up the service under test.
+Launch tests from this repository using any preferred way (Maven, IDE).
+### With Jenkins
+Follow README.md in `./ci` folder. 
