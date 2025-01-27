@@ -1,15 +1,13 @@
 package com.restfulbooker.api.requests;
 
 import com.restfulbooker.api.BaseAPI;
-import io.restassured.response.Response;
-
-import static io.restassured.RestAssured.given;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
 
 public class PingAPI extends BaseAPI {
-    private static final String PATH = "/ping";
+    public static final String PATH = "/ping";
 
-    public static Response ping() {
-        return given()
-                .get(PATH);
+    public static RequestSpecification ping() {
+        return new RequestSpecBuilder().build();
     }
 }

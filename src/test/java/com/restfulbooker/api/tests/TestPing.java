@@ -1,20 +1,33 @@
 package com.restfulbooker.api.tests;
 
-import com.restfulbooker.api.BaseAPI;
 import com.restfulbooker.api.requests.PingAPI;
-import com.restfulbooker.api.specification.response.ResponsePing;
-import io.restassured.response.Response;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.specification.ResponseSpecification;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class TestPing extends BaseAPI {
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class TestPing extends PingAPI {
+    private static ResponseSpecification expectedPingResponse;
+
+    @BeforeAll
+    static void buildExpectedPing() {
+        expectedPingResponse = new ResponseSpecBuilder()
+                .expectStatusCode(201)
+                .expectContentType(ContentType.TEXT)
+                .expectBody(equalTo("Created"))
+                .build();
+    }
+
     @Test
     void testPingIsWorking() {
-        ResponseSpecification expectedResponse = ResponsePing.expectedPing();
-
-        Response ping = PingAPI.ping();
-
-        ping.then()
-            .spec(expectedResponse);
+        given(ping())
+        .when()
+            .get(PATH)
+        .then()
+            .spec(expectedPingResponse);
     }
 }
