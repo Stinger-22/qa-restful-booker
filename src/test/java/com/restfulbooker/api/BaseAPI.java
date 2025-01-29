@@ -11,7 +11,6 @@ import java.util.List;
 
 import static com.restfulbooker.api.requests.BookingAPI.getBookingIds;
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 /**
  * In this class RestAssured default behaviour is configured.
@@ -30,9 +29,10 @@ public class BaseAPI {
         // TODO setup logging in file (use filters)
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
-        // TODO write log in case this fails. Right now running one test will skip it without any description provided.
-        // TODO throw own error
-        assumeTrue(checkWhetherInitialDBIsEmpty());
+        // TODO write log
+        if (!checkWhetherInitialDBIsEmpty()) {
+            throw new InitialDBStateIsNotEmptyException("Database not empty. API tests won't be executed.");
+        }
     }
 
     private static boolean checkWhetherInitialDBIsEmpty() {
@@ -46,5 +46,11 @@ public class BaseAPI {
             .contentType(ContentType.JSON);
 
         return response.body().as(List.class).isEmpty();
+    }
+
+    private static class InitialDBStateIsNotEmptyException extends RuntimeException {
+        InitialDBStateIsNotEmptyException(String message) {
+            super(message);
+        }
     }
 }

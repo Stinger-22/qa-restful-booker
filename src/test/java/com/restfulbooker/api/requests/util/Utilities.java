@@ -3,19 +3,21 @@ package com.restfulbooker.api.requests.util;
 import com.restfulbooker.api.requests.AuthAPI;
 import com.restfulbooker.api.requests.BookingAPI;
 import com.restfulbooker.api.requests.entities.Token;
+import com.restfulbooker.api.requests.exceptions.AuthEndpointNotWorkingException;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 public class Utilities {
     public static String receiveCookieToken() {
         RequestSpecification auth = AuthAPI.createToken("admin", "password123");
         Response response = given(auth).post(AuthAPI.PATH);
-        assumeTrue(response.statusCode() == 200); // TODO throw own exception
+        if (response.statusCode() != 200) {
+            throw new AuthEndpointNotWorkingException("Received status code is not 200, but " + response.statusCode());
+        }
         return extractToken(response);
     }
 
