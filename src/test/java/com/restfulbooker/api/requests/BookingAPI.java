@@ -11,6 +11,10 @@ import java.util.Map;
 public class BookingAPI extends BaseAPI {
     public static final String PATH = "/booking";
 
+    public static RequestSpecification getBookingIds() {
+        return new RequestSpecBuilder().build();
+    }
+
     public static RequestSpecification getBookingIds(BookingSearch by) {
         RequestSpecBuilder builder = new RequestSpecBuilder();
 

@@ -31,6 +31,7 @@ public class BaseAPI {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
         // TODO write log in case this fails. Right now running one test will skip it without any description provided.
+        // TODO throw own error
         assumeTrue(checkWhetherInitialDBIsEmpty());
     }
 

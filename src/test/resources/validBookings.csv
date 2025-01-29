@@ -1,0 +1,5 @@
+testcasename|firstname|lastname|totalprice|depositpaid|checkin|checkout|additionalneeds
+Default|Sam|Gamgee|140|true|2025-02-14|2025-03-01|Breakfast. Second breakfast
+Deposit not paid|Sam|Gamgee|140|false|2025-02-14|2025-03-01|Breakfast. Second breakfast
+Checkout next day|Sam|Gamgee|140|true|2025-04-09|2025-04-10|Breakfast. Second breakfast
+No additional needs|Sam|Gamgee|140|true|2025-02-14|2025-03-01|
