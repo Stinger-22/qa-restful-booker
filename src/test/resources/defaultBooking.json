@@ -1,0 +1,11 @@
+{
+  "firstname" : "Samwise",
+  "lastname" : "Gamgee",
+  "totalprice" : 140,
+  "depositpaid" : true,
+  "bookingdates" : {
+    "checkin" : "2025-02-14",
+    "checkout" : "2025-03-01"
+  },
+  "additionalneeds" : "Breakfast. Second breakfast"
+}

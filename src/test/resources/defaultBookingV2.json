@@ -1,0 +1,11 @@
+{
+  "firstname" : "Frodo",
+  "lastname" : "Baggins",
+  "totalprice" : 220,
+  "depositpaid" : false,
+  "bookingdates" : {
+    "checkin" : "2025-05-13",
+    "checkout" : "2025-07-13"
+  },
+  "additionalneeds" : "Elvish bread"
+}

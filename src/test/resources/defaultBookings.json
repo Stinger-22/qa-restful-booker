@@ -1,0 +1,68 @@
+[
+  {
+    "firstname" : "Samwise",
+    "lastname" : "Gamgee",
+    "totalprice" : 140,
+    "depositpaid" : true,
+    "bookingdates" : {
+      "checkin" : "2025-02-14",
+      "checkout" : "2025-03-01"
+    },
+    "additionalneeds" : "Breakfast. Second breakfast"
+  },
+  {
+    "firstname" : "Bandobras",
+    "lastname" : "Took",
+    "totalprice" : 140,
+    "depositpaid" : true,
+    "bookingdates" : {
+      "checkin" : "2025-02-14",
+      "checkout" : "2025-03-01"
+    },
+    "additionalneeds" : "Breakfast. Second breakfast"
+  },
+  {
+    "firstname" : "Peregrin",
+    "lastname" : "Took",
+    "totalprice" : 140,
+    "depositpaid" : true,
+    "bookingdates" : {
+      "checkin" : "2025-02-14",
+      "checkout" : "2025-03-01"
+    },
+    "additionalneeds" : "Breakfast. Second breakfast"
+  },
+  {
+    "firstname" : "Meriadoc",
+    "lastname" : "Brandybuck",
+    "totalprice" : 140,
+    "depositpaid" : true,
+    "bookingdates" : {
+      "checkin" : "2025-03-22",
+      "checkout" : "2025-04-09"
+    },
+    "additionalneeds" : "Breakfast. Second breakfast"
+  },
+  {
+    "firstname" : "Gandalf",
+    "lastname" : "Grey",
+    "totalprice" : 140,
+    "depositpaid" : true,
+    "bookingdates" : {
+      "checkin" : "2025-03-14",
+      "checkout" : "2025-04-01"
+    },
+    "additionalneeds" : "Staff"
+  },
+  {
+    "firstname" : "Gandalf",
+    "lastname" : "White",
+    "totalprice" : 140,
+    "depositpaid" : true,
+    "bookingdates" : {
+      "checkin" : "2025-04-01",
+      "checkout" : "2025-04-14"
+    },
+    "additionalneeds" : "Staff"
+  }
+]
