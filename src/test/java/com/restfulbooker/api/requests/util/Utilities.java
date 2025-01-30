@@ -2,13 +2,17 @@ package com.restfulbooker.api.requests.util;
 
 import com.restfulbooker.api.requests.AuthAPI;
 import com.restfulbooker.api.requests.BookingAPI;
+import com.restfulbooker.api.requests.entities.BookingRequest;
+import com.restfulbooker.api.requests.entities.BookingResponse;
 import com.restfulbooker.api.requests.entities.Token;
 import com.restfulbooker.api.requests.exceptions.AuthEndpointNotWorkingException;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.List;
 
+import static com.restfulbooker.api.requests.BookingAPI.createBooking;
 import static io.restassured.RestAssured.given;
 
 public class Utilities {
@@ -27,6 +31,27 @@ public class Utilities {
 
     public static void setCookieToken(RequestSpecification request, String token) {
         request.cookie("token", token);
+    }
+
+    public static String receiveAuthToken() {
+        return "Basic YWRtaW46cGFzc3dvcmQxMjM=";
+    }
+
+    public static void setAuthToken(RequestSpecification request) {
+        request.header("Authorization", receiveAuthToken());
+    }
+
+    public static BookingResponse createDefaultBooking() {
+        Response response = given(createBooking(BookingRequest.defaultBooking(), ContentType.JSON.toString(), null))
+                .post("/booking");
+        return response.body().as(BookingResponse.class);
+    }
+
+    public static void deleteBooking(int id) {
+        String token = receiveCookieToken();
+        RequestSpecification deleteBooking = given(BookingAPI.deleteBooking(id));
+        setCookieToken(deleteBooking, token);
+        given(deleteBooking).delete("/booking/{id}");
     }
 
     public static void deleteAllBookings() {
