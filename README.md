@@ -1,6 +1,15 @@
 # Testing restful-booker website
 
-## How to launch tests:
+## Features
+- [x] Used Maven wrapper
+- [x] Used JUnit 5 test framework
+- [ ] Set up logging with Log4j 2
+- [x] Used REST-Assured interactions with API and API testing
+- [ ] Used Cucumber
+- [ ] Used Playwright for E2E testing
+- [x] Set up Jenkins pipeline
+
+## How to launch tests
 ### Manually
 Follow https://github.com/mwinteringham/restful-booker instructions for setting up the service under test.
 Launch tests from this repository using any preferred way (Maven, IDE).
