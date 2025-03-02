@@ -2,10 +2,8 @@
 
 ## Features
 - [x] Used Maven wrapper
-
-~~- Used JUnit 5 test framework~~
-- [x] Migrated to TestNG
-- [ ] Set up logging with Log4j 2
+- [x] ~~- Used JUnit 5 test framework~~ Migrated to TestNG
+- [x] Used SLF4J with Log4J for logging with TestNG
 - [x] Used REST-Assured interactions with API and API testing
 - [ ] Used Cucumber
 - [ ] Used Playwright for E2E testing
