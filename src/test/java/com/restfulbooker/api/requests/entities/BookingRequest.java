@@ -18,12 +18,11 @@ public record BookingRequest(String firstname,
     public static BookingRequest defaultBooking() {
         ObjectMapper mapper = new ObjectMapper();
         BookingRequest defaultBooking;
-        try (InputStream is = BeanProperty.class.getClassLoader().getResourceAsStream("defaultBooking.json")) {
+        try (InputStream is = BeanProperty.class.getClassLoader().getResourceAsStream("booking/defaultBooking.json")) {
             defaultBooking = mapper.readValue(is, BookingRequest.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(defaultBooking);
         return defaultBooking;
     }
 
@@ -31,7 +30,7 @@ public record BookingRequest(String firstname,
         ObjectMapper mapper = new ObjectMapper();
         TypeFactory typeFactory = mapper.getTypeFactory();
         List<BookingRequest> defaultBookings;
-        try (InputStream is = BeanProperty.class.getClassLoader().getResourceAsStream("defaultBookings.json")) {
+        try (InputStream is = BeanProperty.class.getClassLoader().getResourceAsStream("booking/defaultBookings.json")) {
             defaultBookings = mapper.readValue(is, typeFactory.constructCollectionType(List.class, BookingRequest.class));
         } catch (IOException e) {
             throw new RuntimeException(e);

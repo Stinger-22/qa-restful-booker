@@ -1,0 +1,50 @@
+[
+  {
+    "description": "Default",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-02-14",
+      "checkout": "2025-03-01"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Deposit not paid",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2025-02-14",
+      "checkout": "2025-03-01"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Checkout next day",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-04-09",
+      "checkout": "2025-04-10"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "No additional needs",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-02-14",
+      "checkout": "2025-03-01"
+    },
+    "additionalneeds": null
+  }
+]

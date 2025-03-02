@@ -1,12 +1,11 @@
 package com.restfulbooker.api.requests;
 
-import com.restfulbooker.api.BaseAPI;
 import com.restfulbooker.api.requests.entities.Auth;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-public class AuthAPI extends BaseAPI {
+public class AuthAPI {
     public static final String PATH = "/auth";
 
     public static RequestSpecification createToken(String username, String password) {

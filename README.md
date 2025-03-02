@@ -2,7 +2,9 @@
 
 ## Features
 - [x] Used Maven wrapper
-- [x] Used JUnit 5 test framework
+
+~~- Used JUnit 5 test framework~~
+- [x] Migrated to TestNG
 - [ ] Set up logging with Log4j 2
 - [x] Used REST-Assured interactions with API and API testing
 - [ ] Used Cucumber

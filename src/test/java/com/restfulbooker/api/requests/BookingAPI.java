@@ -1,6 +1,5 @@
 package com.restfulbooker.api.requests;
 
-import com.restfulbooker.api.BaseAPI;
 import com.restfulbooker.api.requests.entities.BookingRequest;
 import com.restfulbooker.api.requests.util.BookingSearch;
 import io.restassured.builder.RequestSpecBuilder;
@@ -8,7 +7,7 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
 
-public class BookingAPI extends BaseAPI {
+public class BookingAPI {
     public static final String PATH = "/booking";
 
     public static RequestSpecification getBookingIds() {

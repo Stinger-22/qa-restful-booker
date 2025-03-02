@@ -10,6 +10,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.restfulbooker.api.requests.BookingAPI.createBooking;
@@ -45,6 +46,16 @@ public class Utilities {
         Response response = given(createBooking(BookingRequest.defaultBooking(), ContentType.JSON.toString(), null))
                 .post("/booking");
         return response.body().as(BookingResponse.class);
+    }
+
+    public static List<BookingResponse> createDefaultBookings() {
+        List<BookingResponse> responses = new ArrayList<>();
+        for (BookingRequest bookingRequest : BookingRequest.defaultBookings()) {
+            Response response = given(createBooking(bookingRequest, ContentType.JSON.toString(), null))
+                    .post("/booking");
+            responses.add(response.body().as(BookingResponse.class));
+        }
+        return responses;
     }
 
     public static void deleteBooking(int id) {

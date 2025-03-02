@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="API Tests" verbose="1">
+    <suite-files>
+        <suite-file path="suite_ping.xml"/>
+        <suite-file path="suite_auth.xml"/>
+        <suite-file path="suite_booking.xml"/>
+    </suite-files>
+</suite>

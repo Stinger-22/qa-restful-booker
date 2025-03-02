@@ -1,0 +1,122 @@
+[
+  {
+    "description": "Empty firstname",
+    "firstname": null,
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-02-14",
+      "checkout": "2025-03-01"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Empty lastname",
+    "firstname": "Sam",
+    "lastname": null,
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-02-14",
+      "checkout": "2025-03-01"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Total price is negative",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": -1,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-02-14",
+      "checkout": "2025-03-01"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Total price is zero",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 0,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-02-14",
+      "checkout": "2025-03-01"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Checkin and checkout are in the past",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2023-01-02",
+      "checkout": "2023-01-09"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Checkout is less than checkin",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-04-14",
+      "checkout": "2025-03-11"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Checkin and checkout in the same day",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-05-05",
+      "checkout": "2025-05-05"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Checkin and checkout wrong format mm-dd-yyyy",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "02-14-2025",
+      "checkout": "03-01-2025"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Checkin and checkout wrong format dd-mm-yyyy",
+    "firstname": "Sam",
+    "lastname": "Gamgee",
+    "totalprice": 140,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "14-02-2025",
+      "checkout": "01-03-2025"
+    },
+    "additionalneeds": "Breakfast. Second breakfast"
+  },
+  {
+    "description": "Null everything",
+    "firstname": null,
+    "lastname": null,
+    "totalprice": null,
+    "depositpaid": null,
+    "bookingdates": {
+      "checkin": null,
+      "checkout": null
+    },
+    "additionalneeds": null
+  }
+]

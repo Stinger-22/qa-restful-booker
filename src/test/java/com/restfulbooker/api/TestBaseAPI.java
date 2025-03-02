@@ -5,7 +5,7 @@ import com.restfulbooker.api.requests.util.BookingSearch;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeAll;
+import org.testng.annotations.*;
 
 import java.util.List;
 
@@ -16,26 +16,23 @@ import static io.restassured.RestAssured.given;
  * In this class RestAssured default behaviour is configured.
  * Each test class should extend this.
  */
-public class BaseAPI {
+public class TestBaseAPI {
     protected static final String BASE_URI = "http://localhost";
     protected static final int PORT = 3001;
 
-    @BeforeAll
-    static void setUpRestAssured() {
+    @BeforeSuite
+    public void setUpRestAssured() {
         RestAssured.baseURI = BASE_URI;
         RestAssured.port = PORT;
 
-        // TODO add log4j 2
-        // TODO setup logging in file (use filters)
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
-        // TODO write log
         if (!checkWhetherInitialDBIsEmpty()) {
             throw new InitialDBStateIsNotEmptyException("Database not empty. API tests won't be executed.");
         }
     }
 
-    private static boolean checkWhetherInitialDBIsEmpty() {
+    private boolean checkWhetherInitialDBIsEmpty() {
         BookingSearch search = new BookingSearch.Builder().build();
 
         Response response = given(getBookingIds(search))

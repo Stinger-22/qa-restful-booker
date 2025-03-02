@@ -1,29 +1,65 @@
 package com.restfulbooker.api.tests.booking;
 
+import com.restfulbooker.api.TestBaseAPI;
 import com.restfulbooker.api.requests.BookingAPI;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import com.restfulbooker.api.requests.entities.BookingResponse;
+import com.restfulbooker.api.requests.util.BookingSearch;
+import com.restfulbooker.api.requests.util.Utilities;
+import io.restassured.response.Response;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
-public class TestGetBooking extends BookingAPI {
-    @BeforeAll
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static io.restassured.RestAssured.given;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+public class TestGetBooking extends TestBaseAPI {
+//    TODO fix magic numbers
+    private static List<Integer> createdBookingsIds;
+
+    @BeforeClass
     static void setup() {
-//      TODO Create bookings. Calculate minimum number of required bookings for tests
+        List<BookingResponse> createdBookings = Utilities.createDefaultBookings();
+        createdBookingsIds = createdBookings.stream().map(BookingResponse::bookingid).collect(Collectors.toList());
     }
 
-    @AfterAll
+    @AfterClass
     static void teardown() {
-//        TODO Delete created bookings
+        Utilities.deleteAllBookings();
     }
 
     @Test
     void getAllBookings() {
-        throw new RuntimeException("Not implemented");
+        Response response = given(BookingAPI.getBookingIds())
+                .when().get(BookingAPI.PATH);
+
+        List<Integer> ids = response
+                .then()
+                    .assertThat().statusCode(200)
+                .extract()
+                    .path("bookingid");
+
+        assertEquals(ids.size(), createdBookingsIds.size());
+        assertTrue(ids.containsAll(createdBookingsIds));
+        assertTrue(createdBookingsIds.containsAll(ids));
     }
 
     @Test
     void getBookingsFilteredByFirstname() {
-        throw new RuntimeException("Not implemented");
+        BookingSearch.Builder searchBy = new BookingSearch.Builder();
+        searchBy.firstname("Gandalf");
+        Response response = given(BookingAPI.getBookingIds(searchBy.build()))
+                .when().get(BookingAPI.PATH);
+
+        List<Integer> ids = response.then().assertThat().statusCode(200).extract().path("bookingid");
+
+        assertEquals(ids.size(), 2);
+        assertTrue(ids.containsAll(createdBookingsIds));
+        assertTrue(createdBookingsIds.containsAll(ids));
     }
 
     @Test
@@ -43,6 +79,11 @@ public class TestGetBooking extends BookingAPI {
 
     @Test
     void getBookingsFilteredByAll() {
+        throw new RuntimeException("Not implemented");
+    }
+
+    @Test
+    void getBookingsFilteredByAllEmptyResult() {
         throw new RuntimeException("Not implemented");
     }
 

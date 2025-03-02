@@ -1,20 +1,22 @@
 package com.restfulbooker.api.tests;
 
+import com.restfulbooker.api.util.ResponseTimeFilter;
+import com.restfulbooker.api.TestBaseAPI;
 import com.restfulbooker.api.requests.PingAPI;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.ResponseSpecification;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TestPing extends PingAPI {
+public class TestPing extends TestBaseAPI {
     private static ResponseSpecification expectedPingResponse;
 
-    @BeforeAll
-    static void buildExpectedPing() {
+    @BeforeClass
+    void buildExpectedPing() {
         expectedPingResponse = new ResponseSpecBuilder()
                 .expectStatusCode(201)
                 .expectContentType(ContentType.TEXT)
@@ -24,9 +26,10 @@ public class TestPing extends PingAPI {
 
     @Test
     void testPingIsWorking() {
-        given(ping())
+        given(PingAPI.ping())
+            .filter(new ResponseTimeFilter(1000))
         .when()
-            .get(PATH)
+            .get(PingAPI.PATH)
         .then()
             .spec(expectedPingResponse);
     }

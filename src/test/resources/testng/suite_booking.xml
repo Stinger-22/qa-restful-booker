@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Booking Tests" verbose="1">
+    <test name="Test Create Bookings">
+        <classes>
+            <class name="com.restfulbooker.api.tests.booking.TestCreateBooking"/>
+        </classes>
+    </test>
+</suite>

@@ -1,19 +1,22 @@
 package com.restfulbooker.api.tests;
 
+import com.restfulbooker.api.util.ResponseTimeFilter;
+import com.restfulbooker.api.TestBaseAPI;
 import com.restfulbooker.api.requests.AuthAPI;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.ResponseSpecification;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class TestAuth extends AuthAPI {
+public class TestAuth extends TestBaseAPI {
     private static ResponseSpecification validCredentials;
     private static ResponseSpecification invalidCredentials;
 
-    @BeforeAll
+    @BeforeClass
     static void buildExpectedResponses() {
         validCredentials = new ResponseSpecBuilder()
                 .expectStatusCode(200)
@@ -26,19 +29,23 @@ public class TestAuth extends AuthAPI {
     }
 
     @Test
-    void tokenIsCreatedWithValidCredentials() {
-        given(createToken("admin", "password123"))
+    @Parameters({"username", "password"})
+    void tokenIsCreatedWithValidCredentials(String username, String password) {
+        given(AuthAPI.createToken(username, password))
+            .filter(new ResponseTimeFilter(1000))
         .when()
-            .post(PATH)
+            .post(AuthAPI.PATH)
         .then()
             .spec(validCredentials);
     }
 
     @Test
+    @Parameters({"username", "password"})
     void tokenIsNotCreatedWithInvalidCredentials() {
-        given(createToken("admin", "admin"))
+        given(AuthAPI.createToken("admin", "admin"))
+            .filter(new ResponseTimeFilter(1000))
         .when()
-            .post(PATH)
+            .post(AuthAPI.PATH)
         .then()
             .spec(invalidCredentials);
     }

@@ -1,21 +1,22 @@
 package com.restfulbooker.api.tests.booking;
 
+import com.restfulbooker.api.TestBaseAPI;
 import com.restfulbooker.api.requests.BookingAPI;
 import com.restfulbooker.api.requests.util.Utilities;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class TestDeleteBooking extends BookingAPI {
+public class TestDeleteBooking extends TestBaseAPI {
     private static final String PATH = "/booking/{id}";
 
     private static ResponseSpecification successfullyDeleted;
 
-    @BeforeAll
+    @BeforeClass
     static void buildExpectedResponses() {
         successfullyDeleted = new ResponseSpecBuilder()
                 .expectStatusCode(200)
@@ -53,7 +54,7 @@ public class TestDeleteBooking extends BookingAPI {
     void deleteBookingWithoutToken() {
         int id = Utilities.createDefaultBooking().bookingid();
 
-        given(deleteBooking(id))
+        given(BookingAPI.deleteBooking(id))
         .when()
             .delete(PATH)
         .then()
@@ -64,7 +65,7 @@ public class TestDeleteBooking extends BookingAPI {
 
     @Test
     void deleteNonExistingBooking() {
-        given(deleteBooking(1))
+        given(BookingAPI.deleteBooking(1))
         .when()
             .delete(PATH)
         .then()
